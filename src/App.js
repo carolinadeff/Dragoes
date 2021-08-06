@@ -1,10 +1,11 @@
-import Layout from './components/Layout'
-import List from './pages/List';
+import React from 'react';
+import { AuthProvider } from './hooks/auth';
+import Routes from './Routes';
 
 const App = () => (
-  <Layout>
-    <List />
-  </Layout>
+  <AuthProvider>
+    <Routes />
+  </AuthProvider>
 )
 
-export default App;
+export default App

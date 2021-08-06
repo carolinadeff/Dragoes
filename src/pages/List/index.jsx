@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Row from '../../components/Row'
 import api from '../../services/api'
 import iconsList from '../../assets/iconsList'
+import Layout from '../../components/Layout'
+import {
+  ListContainer,
+  Link
+} from './styles'
 
 
 const List = () => {
@@ -21,14 +26,22 @@ const List = () => {
   }, [])
 
   return (
-  <div id='dragons'>
-    {
-      dragons.map((dragon) =>(
-        <Row key={dragon.id} dragon={dragon} />
-      ))
-    }
-  </div>
+    <Layout title='Todos os dragões' >
+      <ListContainer id='dragons'>
+        {
+          dragons.map((dragon) =>(
+            <Row key={dragon.id} dragon={dragon} />
+          ))
+        }
+      </ListContainer>
 
-)
-  }
+      <Link
+        href='/new'
+      >
+        Criar um novo dragão
+      </Link>
+    </Layout>
+  )
+}
+
 export default List

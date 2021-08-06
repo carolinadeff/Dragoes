@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.li`
   background-color: ${props => props.color};
-
+  color: #FFF;
   list-style: none;
   border-radius: 5px;
   margin: 10px 0;
@@ -35,6 +35,9 @@ export const Icon = styled.div`
   > svg {
     width: 24px;
     height: 24px;
+    > path {
+      fill: #FFF;
+    }
   }
 `
 
@@ -50,6 +53,7 @@ text-align: left;
 `
 
 export const ModalContent = styled.div`
+  width: 30vw;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -72,6 +76,9 @@ min-height: 160px;
 `
 
 export const Button = styled.button`
+  box-sizing: border-box;
+  font-size: 13px;
+  text-decoration: none;
   background-color: grey;
   display: block;
   width: 100%;

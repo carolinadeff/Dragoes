@@ -6,11 +6,25 @@ export const Container = styled.div`
 `
 
 export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 80px;
   padding: 0 20%;
   background-color: grey;
+  color: #FFF;
+  > button {
+    background-color: transparent;
+    border: 2px solid #FFF;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #FFF;
+    font-size: 14px;
+  }
 `
 
 export const Content = styled.div`
   margin: 0 20%;
+  color: grey;
 `

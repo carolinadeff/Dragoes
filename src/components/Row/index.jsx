@@ -48,7 +48,11 @@ const Row = ({ dragon }) => {
     } else if (dragonDetails.histories?.length > 0 ) {
       return (
         <ul>
-          { dragonDetails.histories.map((history) => (<li>{history}</li>)) }
+          {
+            dragonDetails.histories.map((history) => (
+              typeof history === 'string' ? (<li key={history}>{history}</li>) : (<></>)
+            ))
+          }
         </ul>
       )
     }
@@ -96,9 +100,8 @@ const Row = ({ dragon }) => {
 
               <div>
                 <Button
-                  color="#ccc"
-                  type="button"
-                  onClick={() => { }}
+                  as='a'
+                  href={`/edit/${dragon.id}`}
                 >
                   Editar
                 </Button>
