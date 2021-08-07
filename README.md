@@ -1,3 +1,3 @@
 ## Dragões
 
-CRUD dragões, em contrução.
+CRUD dragões.
