@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
 import { useForm, useFieldArray } from 'react-hook-form'
 import api from '../../services/api'
-import { useHistory, useParams } from 'react-router-dom'
-import payloadHelper from '../../helpers/payloadHelper'
+import { useParams } from 'react-router-dom'
 import { FormItem, Button, Label, Input, Row, FormArray, ArrayLabel } from './styles'
 import fetchedHelper from '../../helpers/fetchedHelper'
+import useUpdateDragon from '../../hooks/useUpdateDragon'
+import useCreateDragon from '../../hooks/useCreateDragon'
 
 const Form = ({ newDragon }) => {
-  const history = useHistory()
   let { dragonId } = useParams();
+
   const { register, control, handleSubmit, reset } = useForm({
     defaultValues: {
       name: '',
@@ -21,21 +22,12 @@ const Form = ({ newDragon }) => {
     name: "histories"
   });
 
+  const updateDragon = useUpdateDragon(dragonId)
+  const createDragon = useCreateDragon()
 
   const onSubmit = (data) => {
-    if (newDragon) {
-      api.post('/', payloadHelper(data))
-      .then((response) => {
-        console.log(response)
-        history.push('/')
-      })
-    } else {
-      api.put(`/${dragonId}`, payloadHelper(data))
-      .then((response) => {
-        console.log(response)
-        history.push('/')
-      })
-    }
+    if (newDragon) createDragon(data)
+    else updateDragon(data)
   }
 
   useEffect(() => {

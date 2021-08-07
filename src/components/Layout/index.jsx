@@ -1,9 +1,12 @@
 import React from 'react'
 import { useAuth } from '../../hooks/auth'
-import { Container, Header, Content } from './styles'
+import { Container, Header, Content, Title } from './styles'
+import { useHistory } from 'react-router-dom'
 
 const Layout = ({children, title }) => {
+  const history = useHistory()
   const { signOut } = useAuth()
+
   return (
   <Container>
     <Header>
@@ -17,7 +20,15 @@ const Layout = ({children, title }) => {
     </button>
     </Header>
     <Content>
-      <h4>{title}</h4>
+      <Title>
+        {title}
+        <button
+          type='button'
+          onClick={() => history.goBack()}
+        >
+          Voltar
+        </button>
+      </Title>
       {children}
     </Content>
   </Container>

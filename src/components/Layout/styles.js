@@ -28,3 +28,18 @@ export const Content = styled.div`
   margin: 0 20%;
   color: grey;
 `
+
+export const Title = styled.h4`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > button {
+    background-color: transparent;
+    border: 2px solid grey;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: grey;
+    font-size: 14px;
+  }
+`

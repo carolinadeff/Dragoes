@@ -1,29 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Row from '../../components/Row'
-import api from '../../services/api'
-import iconsList from '../../assets/iconsList'
 import Layout from '../../components/Layout'
 import {
   ListContainer,
   Link
 } from './styles'
+import useFetchDragons from '../../hooks/useFetchDragons'
 
 
 const List = () => {
-  const [dragons, setDragons] = useState([])
-  const drawIcon = () => {
-    const index = Math.floor(Math.random()*iconsList.length)
-    return iconsList[index]
-  }
-
-
-  useEffect(() => {
-    api.get('/')
-    .then(({ data }) => (
-      data.map((dragonData) => ({...dragonData, icon: drawIcon() }))
-    ))
-    .then((dragonsList) => { setDragons(dragonsList) })
-  }, [])
+  const dragons = useFetchDragons()
 
   return (
     <Layout title='Todos os dragões' >
